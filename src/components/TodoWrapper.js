@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import TodoForm from './TodoForm'
 import { v4 as uuidv4 } from "uuid";
+import Todo from './Todo';
 uuidv4(); //for initilazing
 const TodoWrapper = () => {
     const [todos,setTodos] = useState([])
@@ -17,6 +18,10 @@ const TodoWrapper = () => {
 
     <div className='TodoWrapper'>
         <TodoForm addTodo={addTodo} />
+        {todos.map((todo,index) =>(
+            <Todo tasks={todo} key={index}/> //tasks diye bir prop oluşturduk bununla taskları gönderiyoruz Todo içine
+            //her bir todo listelemek için 
+        ) )}
        
     </div>
   )
