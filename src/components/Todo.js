@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const Todo = ({tasks}) => {//task probunu ekledik
+const Todo = ({tasks, toggleComplete, deleteTodo,EditTodo}) => {//task probunu ekledik .
     
   return (
     <div className='Todo'>
-      <p> {tasks.task}</p>
+      <p onClick={() => toggleComplete(tasks.id)} className={`${tasks.completed ? 'completed' : ""}`}> {tasks.task}</p> 
+      {/* Eğer tasks.completed true (doğru) ise, sınıf adı "completed" olarak atanır. Eğer task.completed false (yanlış) ise, boş bir dize (empty string) atanır. */}
+       
       <div>
-        <FontAwesomeIcon icon={faPenToSquare}/>
-        <FontAwesomeIcon icon={faTrash}/>
+        <FontAwesomeIcon icon={faPenToSquare} onClick={()=>EditTodo(tasks.id)}/>
+        <FontAwesomeIcon icon={faTrash} onClick={()=>deleteTodo(tasks.id)}/>
        
       </div>
     </div>
